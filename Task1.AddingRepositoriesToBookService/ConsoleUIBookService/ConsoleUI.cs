@@ -23,7 +23,7 @@ namespace ConsoleUIBookService
                 new Book("Михаил Лермонтов", "Мцыри", 153, "Киев-Пресс", 2001),
                 new Book("Николай Некрасов", "Русские женщины", 385, "Киев-Пресс", 2006),
             };
-
+            
             #region Using Binary Serializer
             string pathBS = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "books.bin");
             RepositoryUsingBinarySerializer bs = new RepositoryUsingBinarySerializer(pathBS);
@@ -43,15 +43,15 @@ namespace ConsoleUIBookService
             bookServiceSecond.SaveListBook();
             bookServiceSecond.LoadListBook();
             #endregion
-
+            
             #region Using Linq2XML
             string pathLinqXML = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "booksLinq.xml");
             RepositoryUsingLINQ2XML xlis = new RepositoryUsingLINQ2XML(pathLinqXML);
             BookListService bookServiceThird = new BookListService(xlis);
-            bookServiceSecond.AddBook(startList);
+            bookServiceThird.AddBook(startList);
 
-            bookServiceSecond.SaveListBook();
-            bookServiceSecond.LoadListBook();
+            bookServiceThird.SaveListBook();
+            bookServiceThird.LoadListBook();
             #endregion
         }
     }
